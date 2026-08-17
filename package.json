@@ -1,0 +1,26 @@
+{
+  "name": "@iooe/rulate-sdk",
+  "version": "0.1.0",
+  "description": "Production-oriented TypeScript SDK for public and authorized tl.rulate.ru catalog, books and chapters.",
+  "type": "module",
+  "license": "MIT",
+  "author": "iooe",
+  "engines": { "node": ">=20.12" },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": { ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" }, "./package.json": "./package.json" },
+  "files": ["dist", "README.md", "LICENSE"],
+  "scripts": {
+    "clean": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "build": "npm run clean && tsc -p tsconfig.json",
+    "test": "npm run build && node --test test/*.test.mjs",
+    "check": "npm run typecheck && npm test && npm pack --dry-run"
+  },
+  "keywords": ["rulate", "ranobe", "light-novel", "web-novel", "typescript", "sdk"],
+  "repository": { "type": "git", "url": "git+https://github.com/iooe/rulate-node-sdk.git" },
+  "bugs": { "url": "https://github.com/iooe/rulate-node-sdk/issues" },
+  "homepage": "https://github.com/iooe/rulate-node-sdk#readme",
+  "publishConfig": { "access": "public", "provenance": true },
+  "devDependencies": { "typescript": "^5.8.3" }
+}
